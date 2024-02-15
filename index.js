@@ -10,6 +10,7 @@ minGap = 100;
 maxGap = 500;
 gap = randGap();
 var myObstacle = [];
+var colors = ["red" , "black" , "green"]
 var jumpSound = document.getElementById("jump-sound");
 var gameOverSound = document.getElementById("game-over-sound");
 
@@ -58,7 +59,7 @@ function everyInterval(n){
 }
 
 function jump(){
-    player.speedY = -3;
+    player.speedY = -2;
     jumpSound.play();
 }
 
@@ -73,8 +74,11 @@ function obstacle(){
     this.height = Math.floor(minHeight+Math.random()*(maxHeight - minHeight+1));
     this.width = Math.floor(minWidth+Math.random()*(maxWidth - minWidth+1));
     this.x = 1200;
+    this.randColor = Math.floor(Math.random() * colors.length);
+    this.color = colors[this.randColor]
     this.y = gameArea.canvas.height - this.height;
     this.draw = function(){
+        gameArea.context.fillStyle = this.color;
         gameArea.context.fillRect(this.x , this.y , this.width, this.height)
     }
 }
@@ -122,5 +126,6 @@ var gameArea = {
     stop: function(){
         clearInterval(this.interval);
         gameOverSound.play();
+        alert("Game Over! Final Score : " + Math.floor(gameArea.score))
     }
 }
