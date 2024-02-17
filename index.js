@@ -63,13 +63,12 @@ function jump(){
     jumpSound.play();
 }
 
-// genertating a random gap between obstacles
 function randGap(){
     return Math.floor(minGap + Math.random()*(maxGap - minGap+1));
 }
 
 
-// generating a random obstacle
+
 function obstacle(){
     this.height = Math.floor(minHeight+Math.random()*(maxHeight - minHeight+1));
     this.width = Math.floor(minWidth+Math.random()*(maxWidth - minWidth+1));
@@ -104,7 +103,7 @@ var gameArea = {
             }
         }
         gameArea.clear();
-        // pushing an obstacle every 150 frames 
+        
         if(everyInterval(gap)){
             myObstacle.push(new obstacle());
             gap = randGap();
