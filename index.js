@@ -9,12 +9,12 @@ maxWidth = 20;
 minGap = 100;
 maxGap = 500;
 gap = randGap();
-var myObstacle = [];
-var colors = ["red" , "black" , "green"]
-var jumpSound = document.getElementById("jump-sound");
-var gameOverSound = document.getElementById("game-over-sound");
+let myObstacle = [];
+let colors = ["red" , "black" , "green"]
+let jumpSound = document.getElementById("jump-sound");
+let gameOverSound = document.getElementById("game-over-sound");
 
-var scoreText = {
+let scoreText = {
     x: 900,
     y:50,
     update: function(text){
@@ -25,7 +25,7 @@ var scoreText = {
 
 
 
-var player ={
+let player ={
     x: 20,
     y: 470,
     gravity: 0.1,
@@ -82,7 +82,7 @@ function obstacle(){
     }
 }
 
-var gameArea = {
+let gameArea = {
     canvas:document.createElement("canvas"),
     start: function(){
         this.canvas.height = 500;
