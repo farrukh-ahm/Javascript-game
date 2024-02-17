@@ -10,9 +10,15 @@ minGap = 100;
 maxGap = 500;
 gap = randGap();
 let myObstacle = [];
+
 let colors = ["red" , "black" , "green"]
 let jumpSound = document.getElementById("jump-sound");
 let gameOverSound = document.getElementById("game-over-sound");
+let restartBtn = document.getElementById("restart");
+
+restartBtn.addEventListener("click" ,function(){
+    location.reload()
+})
 
 let scoreText = {
     x: 900,
@@ -59,8 +65,10 @@ function everyInterval(n){
 }
 
 function jump(){
-    player.speedY = -2;
-    jumpSound.play();
+    if(player.speedY == 0){
+        player.speedY = -2;
+        jumpSound.play();
+    }
 }
 
 function randGap(){
@@ -93,7 +101,7 @@ let gameArea = {
         this.score =0;
         scoreText.update("Score: 0");
         this.interval = setInterval(this.updateGameArea,5)
-        window.addEventListener("keydown", jump)
+        window.addEventListener("keypress", jump)
     },
     updateGameArea : function(){
         for(i=0 ; i<myObstacle.length; i++){
